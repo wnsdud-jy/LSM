@@ -1,17 +1,27 @@
+import { Sparkline } from "@/components/metrics/Sparkline";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import type { MetricPoint } from "@/types/system";
 
 type MetricCardProps = {
   title: string;
   value: string;
+  subtitle?: string;
   points: MetricPoint[];
 };
 
-export function MetricCard({ title, value, points }: MetricCardProps) {
+export function MetricCard({ title, value, subtitle, points }: MetricCardProps) {
   return (
-    <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-      <h3 className="text-sm font-semibold text-slate-600">{title}</h3>
-      <p className="mt-2 text-2xl font-bold">{value}</p>
-      <p className="mt-2 text-xs text-slate-500">{points.length} points</p>
-    </section>
+    <Card>
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{subtitle ?? `${points.length} points`}</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p className="text-3xl font-semibold">{value}</p>
+        <div className="mt-4 h-12 text-slate-500">
+          <Sparkline points={points} />
+        </div>
+      </CardContent>
+    </Card>
   );
 }

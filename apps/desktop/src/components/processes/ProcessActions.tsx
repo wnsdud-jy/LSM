@@ -1,5 +1,6 @@
 import type { ProcessSignal } from "@/types/system";
 import { tauriApi } from "@/lib/tauriApi";
+import { Button } from "@/components/ui/button";
 
 type ProcessActionsProps = {
   pid: number;
@@ -8,18 +9,18 @@ type ProcessActionsProps = {
 export function ProcessActions({ pid }: ProcessActionsProps) {
   return (
     <div className="inline-flex gap-2">
-      <button onClick={() => void tauriApi.sendProcessSignal(pid, "Sigterm" as ProcessSignal)} type="button">
+      <Button variant="outline" size="sm" onClick={() => void tauriApi.sendProcessSignal(pid, "Sigterm" as ProcessSignal)}>
         TERM
-      </button>
-      <button onClick={() => void tauriApi.sendProcessSignal(pid, "Sigkill" as ProcessSignal)} type="button">
+      </Button>
+      <Button variant="destructive" size="sm" onClick={() => void tauriApi.sendProcessSignal(pid, "Sigkill" as ProcessSignal)}>
         KILL
-      </button>
-      <button onClick={() => void tauriApi.sendProcessSignal(pid, "Sigstop" as ProcessSignal)} type="button">
+      </Button>
+      <Button variant="secondary" size="sm" onClick={() => void tauriApi.sendProcessSignal(pid, "Sigstop" as ProcessSignal)}>
         STOP
-      </button>
-      <button onClick={() => void tauriApi.sendProcessSignal(pid, "Sigcont" as ProcessSignal)} type="button">
+      </Button>
+      <Button variant="secondary" size="sm" onClick={() => void tauriApi.sendProcessSignal(pid, "Sigcont" as ProcessSignal)}>
         CONT
-      </button>
+      </Button>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { MetricCard } from "@/components/metrics/MetricCard";
 import { useSystemStore } from "@/stores/systemStore";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function DashboardPage() {
   const metrics = useSystemStore((s) => s.metrics);
@@ -8,6 +9,11 @@ export function DashboardPage() {
 
   return (
     <section className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <Card>
+        <CardHeader>
+          <CardTitle>System Overview</CardTitle>
+        </CardHeader>
+      </Card>
       <MetricCard title="CPU" value={`${metrics.cpu_percent.toFixed(1)}%`} points={metrics.cpu_history} />
       <MetricCard title="RAM" value={`${safeRam.toFixed(1)}%`} points={metrics.ram_history} />
       <MetricCard title="Swap" value={`${safeSwap.toFixed(1)}%`} points={metrics.ram_history} />
