@@ -1,10 +1,12 @@
-#[derive(Debug, Clone)]
+use serde::Serialize;
+
+#[derive(Debug, Clone, Serialize)]
 pub struct MetricPoint {
     pub ts_ms: i64,
     pub value: f64,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct MetricsSnapshot {
     pub cpu_percent: f32,
     pub ram_used_bytes: u64,
@@ -23,7 +25,7 @@ pub struct MetricsSnapshot {
     pub net_tx_history: Vec<MetricPoint>,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct ProcessRow {
     pub pid: i32,
     pub user: String,

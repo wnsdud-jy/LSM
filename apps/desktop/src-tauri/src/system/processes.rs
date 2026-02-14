@@ -1,5 +1,7 @@
 use crate::system::models::ProcessRow;
+use serde::Deserialize;
 
+#[derive(Debug, Clone, Deserialize)]
 pub struct ProcessQuery {
     pub search: Option<String>,
     pub sort_by: Option<String>,

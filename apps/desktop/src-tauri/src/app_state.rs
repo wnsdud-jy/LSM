@@ -5,9 +5,10 @@ pub struct AppState {
 
 impl AppState {
     pub fn new() -> Self {
+        let uid = unsafe { libc::geteuid() as u32 };
         Self {
-            current_uid: 0,
-            target_uid: 0,
+            current_uid: uid,
+            target_uid: uid,
         }
     }
 

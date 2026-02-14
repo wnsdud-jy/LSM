@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes tm-line-draw {
+  from {
+    stroke-dasharray: 420;
+    stroke-dashoffset: 420;
+  }
+  to {
+    stroke-dasharray: 420;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes tm-dot-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.7;
+  }
+}
+
+@keyframes tm-scan {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(110%);
+  }
+}
+
+@keyframes tm-area-rise {
+  from {
+    opacity: 0.4;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tm-line-draw {
+  animation: tm-line-draw 700ms ease-out;
+}
+
+.tm-dot-pulse {
+  transform-origin: center;
+  animation: tm-dot-pulse 1200ms ease-in-out infinite;
+}
+
+.tm-scan {
+  animation: tm-scan 2600ms linear infinite;
+}
+
+.tm-area-rise {
+  animation: tm-area-rise 500ms ease-out;
+}

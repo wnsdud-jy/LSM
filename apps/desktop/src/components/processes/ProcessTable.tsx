@@ -23,7 +23,7 @@ export function ProcessTable({ rows }: { rows: ProcessRow[] }) {
           <TableRow key={row.pid}>
             <TableCell className="font-mono">{row.pid}</TableCell>
             <TableCell>{row.user}</TableCell>
-            <TableCell className="max-w-0 truncate" title={row.command}>
+            <TableCell className="max-w-0 truncate">
               {row.command}
             </TableCell>
             <TableCell>{row.cpu_percent.toFixed(1)}%</TableCell>
